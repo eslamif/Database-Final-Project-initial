@@ -10,36 +10,55 @@
 	<h3>Life Lessons Frozen in Time</h3>
 	
 	<!-- Member Login -->
-	<form>
-		<legend>Members</legend>
-		<input id="email" type="text"> E-mail
-		</br>
-		<input id="pass" type="password"> Password
-		</br>
+	<form id="currentMembers">
+	<legend>Members</legend>
+		<ul>
+			<li>
+				<label>E-mail:</label>
+				<input id="email" type="text"> 
+			</li>
+			
+			<li>
+				<label>Password:</label>
+				<input id="pass" type="password"> 
+			</li>		
+		</ul>
 		<input type="button" value="Login"> 
 	</form>
 	</br>
-	
-	<!-- Register New Account -->
-	<div id="newUser">
-		<input id="createAccount" type="button" value="Create New Account" onClick="unhideRegForm()">
-		</br>
-		</br>
-		<div id="loginForm" style="display: none;">	
-			<form>
-				<legend>Please complete the following</legend>
-				<input id="f_name" type="text"> First Name
-				</br>	
-				<input id="l_name" type="text"> Last Name
-				</br>			
-				<input id="email" type="text"> E-mail
-				</br>
-				<input id="pass" type="password"> Password
-				</br>
-				<input id="register" type="button" value="Register"> 			
-			</form>	
-		</div>
 		
+	<!-- Register New Account -->		
+	<div id="newUser">
+		<input id="createAccount" type="button" value="Create New Account" onClick="unhideRegForm()">	
+
+		<div id="loginForm" style="display: none;">	
+			<form id="newMembers">
+			<legend>Please complete the following</legend>
+				<ul>
+					<li>
+						<label>First Name:</label>
+						<input id="f_name" type="text"> 
+					</li>
+					
+					<li>
+						<label>Last Name:</label>
+						<input id="l_name" type="text"> 
+					</li>		
+					
+					<li>
+						<label>E-mail:</label>
+						<input id="email" type="text"> 
+					</li>
+					
+					<li>
+						<label>Password:</label>
+						<input id="pass" type="password"> 
+					</li>		
+				</ul>
+				<input id="register" type="button" value="Register"> 
+			</form>
+		</div>
+	
 		<!-- Confirm user registered successfully via AJAX -->
 		<div id="regConfirmation"> 
 		</div>
