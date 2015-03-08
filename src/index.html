@@ -17,10 +17,27 @@
 		</br>
 		<input type="button" value="Login"> 
 	</form>
+	</br>
 	
-	<p><a href="">Create an Account</a> if you're a new member.
+	<input id="createAccount" type="button" value="Create New Account" onClick="unhideRegForm()">
+	</br>
+	</br>
+	<div id="loginForm" style="display: none;">	
+		<form>
+			<legend>Please complete the following</legend>
+			<input id="f_name" type="text"> First Name
+			</br>	
+			<input id="l_name" type="text"> Last Name
+			</br>			
+			<input id="email" type="text"> E-mail
+			</br>
+			<input id="pass" type="password"> Password
+			</br>
+			<input type="button" value="Register"> 			
+		</form>	
+	</div>
 	
-	<script src="http://localhost/myhost-exemple/Final%20Project/src/jsFunctions.js"></script>
-	<script src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>
+	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>	
+	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jsFunctions.js"></script>
 </body>
 </html>
