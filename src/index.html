@@ -2,13 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-
+	<title>Wiki Quote</title>
 </head>
 
 <body>
 	<h2>Quote Wiki</h2>
 	<h3>Life Lessons Frozen in Time</h3>
 	
+	<!-- Member Login -->
 	<form>
 		<legend>Members</legend>
 		<input id="email" type="text"> E-mail
@@ -19,25 +20,29 @@
 	</form>
 	</br>
 	
-	<input id="createAccount" type="button" value="Create New Account" onClick="unhideRegForm()">
-	</br>
-	</br>
-	<div id="loginForm" style="display: none;">	
-		<form>
-			<legend>Please complete the following</legend>
-			<input id="f_name" type="text"> First Name
-			</br>	
-			<input id="l_name" type="text"> Last Name
-			</br>			
-			<input id="email" type="text"> E-mail
-			</br>
-			<input id="pass" type="password"> Password
-			</br>
-			<input id="register" type="button" value="Register"> 			
-		</form>	
-	</div>
-	
-	<div id="regConfirmation"> <!-- Confirm user registered successfully via AJAX -->
+	<!-- Register New Account -->
+	<div id="newUser">
+		<input id="createAccount" type="button" value="Create New Account" onClick="unhideRegForm()">
+		</br>
+		</br>
+		<div id="loginForm" style="display: none;">	
+			<form>
+				<legend>Please complete the following</legend>
+				<input id="f_name" type="text"> First Name
+				</br>	
+				<input id="l_name" type="text"> Last Name
+				</br>			
+				<input id="email" type="text"> E-mail
+				</br>
+				<input id="pass" type="password"> Password
+				</br>
+				<input id="register" type="button" value="Register"> 			
+			</form>	
+		</div>
+		
+		<!-- Confirm user registered successfully via AJAX -->
+		<div id="regConfirmation"> 
+		</div>
 	</div>
 	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>	
