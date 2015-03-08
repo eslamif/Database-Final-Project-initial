@@ -5,5 +5,5 @@ f_name VARCHAR(255) NOT NULL,
 l_name VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL,
 password VARCHAR(255) NOT NULL,
-date_registered DATE NOT NULL
+dob DATE NOT NULL
 )
