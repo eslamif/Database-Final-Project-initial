@@ -25,8 +25,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	//Save New User to Database
 	setSqlNewUser($_POST, $mysqli);
 	
-	//Greet New User
-
+	//echo $f_name;
+	echo "hi";
 }
 
 

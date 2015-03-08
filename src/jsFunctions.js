@@ -12,9 +12,16 @@ function() {
 			dob: $('#dob').val()
 		}, 
 			function(httpResponse) {
+				//$('#regConfirmation').text(httpResponse);
+
+				//Redirect New Member to Member's Page
+				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.html";		
 				$('#regConfirmation').text(httpResponse);
+
+
 			});
 	}); 
+	
 } 
 
 ); //end $(document).ready
