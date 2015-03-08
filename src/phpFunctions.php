@@ -10,6 +10,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	$l_name = $_POST['l_name'];
 	$email = $_POST['email'];
 	$pass = $_POST['pass'];	
+	$dob = $_POST['dob'];
 }
 
 ?>
