@@ -1,0 +1,9 @@
+#Create Users Table
+CREATE TABLE Users (
+id_user INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+f_name VARCHAR(255) NOT NULL,
+l_name VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+date_registered DATE NOT NULL
+)
