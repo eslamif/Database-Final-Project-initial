@@ -3,7 +3,7 @@ $(document).ready(
 //Register New User
 function() {
 	$('#register').click(function() {
-		$.post("phpFunctions.php?action=register", 
+		$.post("database.php?action=register", 
 		{
 			f_name: $('#f_name').val(), 
 			l_name: $('#l_name').val(),
@@ -15,13 +15,11 @@ function() {
 				//$('#regConfirmation').text(httpResponse);
 
 				//Redirect New Member to Member's Page
-				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.html";		
-				$('#regConfirmation').text(httpResponse);
-
-
+				if(httpResponse == "user_registered") {
+					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+				}
 			});
 	}); 
-	
 } 
 
 ); //end $(document).ready
