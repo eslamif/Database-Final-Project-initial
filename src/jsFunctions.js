@@ -1,4 +1,16 @@
 $(document).ready(
+/*
+//Validate Input for Registrations
+function() {
+	$('#f_Name').focusout(function() {
+		$.post("database.php?action=validate_f_name",
+		{f_name: $('#f_name').val()},
+		function(httpResponse) {
+			alert("It worked");
+		});
+	});
+},
+*/
 
 //Register New User
 function() {
@@ -41,7 +53,20 @@ function() {
 
 ); //end $(document).ready
 
+//Unhide Registration Form
 function unhideRegForm() {
 	$('#registerForm').css("display", "block");
+}
+
+//Validate First Name of Registration Form
+function validateFirstName() {
+		$.post("input_validation.php?action=validate&validate=f_name",
+		{f_name: $('#f_name').val()},
+		function(httpResponse) {
+			if(httpResponse == 'valid')
+				alert("Valid");
+			else if(httpResponse == 'invalid')
+				alert("Invalid");
+		});
 }
 

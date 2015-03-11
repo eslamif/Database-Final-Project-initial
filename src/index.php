@@ -45,7 +45,7 @@ header('Content-Type: text/html');
 				<ul>
 					<li>
 						<label>First Name:</label>
-						<input id="f_name" type="text" name="f_name"> 
+						<input id="f_name" type="text" name="f_name" onblur="validateFirstName()"> 
 						<label>(20 or less characters)</label>
 					</li>
 					
