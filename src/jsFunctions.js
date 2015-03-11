@@ -1,16 +1,4 @@
 $(document).ready(
-/*
-//Validate Input for Registrations
-function() {
-	$('#f_Name').focusout(function() {
-		$.post("database.php?action=validate_f_name",
-		{f_name: $('#f_name').val()},
-		function(httpResponse) {
-			alert("It worked");
-		});
-	});
-},
-*/
 
 //Register New User
 function() {
@@ -63,10 +51,13 @@ function validateFirstName() {
 		$.post("input_validation.php?action=validate&validate=f_name",
 		{f_name: $('#f_name').val()},
 		function(httpResponse) {
-			if(httpResponse == 'valid')
-				alert("Valid");
-			else if(httpResponse == 'invalid')
-				alert("Invalid");
+			if(httpResponse == 'invalid') {
+				$('#f_name').css("background-color", "red");
+				alert("Your first name is invalid. Please enter a name with 20 or less letters.");
+			}
+			else
+				$('#f_name').css("background-color", "transparent");
+				
 		});
 }
 

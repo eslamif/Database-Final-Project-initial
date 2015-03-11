@@ -46,13 +46,13 @@ header('Content-Type: text/html');
 					<li>
 						<label>First Name:</label>
 						<input id="f_name" type="text" name="f_name" onblur="validateFirstName()"> 
-						<label>(20 or less characters)</label>
+						<label>(20 or less letters)</label>
 					</li>
 					
 					<li>
 						<label>Last Name:</label>
 						<input id="l_name" type="text" name="l_name"> 
-						<label>(20 or less characters)</label>
+						<label>(20 or less letters)</label>
 					</li>		
 					
 					<li>
