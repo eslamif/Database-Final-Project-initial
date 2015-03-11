@@ -22,16 +22,16 @@ header('Content-Type: text/html');
 	<legend>Members</legend>
 		<ul>
 			<li>
-				<label>E-mail:</label>
-				<input id="email" type="text"> 
+				<label>Email:</label>
+				<input id="e_mail" type="text" name="e_mail"> 
 			</li>
 			
 			<li>
 				<label>Password:</label>
-				<input id="pass" type="password"> 
+				<input id="password" type="password" name="password"> 
 			</li>		
 		</ul>
-		<input type="button" value="Login"> 
+		<input id="login" type="button" value="Login"> 
 	</form>
 	</br>
 		

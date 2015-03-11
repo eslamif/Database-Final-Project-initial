@@ -34,9 +34,23 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	}
 }
 
+//Login Existing User
+if(isset($_GET['action']) && $_GET['action'] == 'login') {
+	$e_mail = $_POST['e_mail'];
+	$password = $_POST['password'];		
+	
+	//Validate User Input
+		
+		
+		
+	//Connect to MySQL
+	$mysqli = connectToSql();
 
-
-
+	//Validate User Exists
+	$userAndPass = getUserAndPassword($mysqli);
+	$jsonStr = json_encode($userAndPass);		//encode to JSON string
+	echo $jsonStr;	
+}
 
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
@@ -88,6 +102,41 @@ function setSqlNewUser($http, $mysqli) {
 	
 	$stmt->close();		//close statement
 	return true;
+}
+
+//Confirm User Exists in Database
+function getUserAndPassword($mysqli) {
+	$e_mail = NULL;
+	$password = NULL;
+	
+	//Prepared Statement - prepare
+	if (!($stmt = $mysqli->prepare("SELECT email, password FROM users"))) {
+		//echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		echo "An error occurred while communicating with the database server. Please try again later."; 
+	}
+	
+	//Prepared Statement - execute
+	if (!$stmt->execute()) {
+		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+
+	//Bind results
+	if (!$stmt->bind_result($e_mail, $password)) {
+	    //echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+	
+	//Store result in array
+	$arrOuter = array();
+	$arrInner = array();
+	while($stmt->fetch()) {
+		$arrInner = [$e_mail, $password];
+		array_push($arrOuter, $arrInner);		
+	}
+	
+	$stmt->close();	
+	return $arrOuter;
 }
 
 //Track Session

@@ -20,7 +20,24 @@ function() {
 				}
 			});
 	}); 
-} 
+},
+
+//Login Existing User
+function() {
+	$('#login').click(function() {
+		$.post("database.php?action=login", 
+		{
+			e_mail: $('#e_mail').val(),
+			password: $('#password').val()
+		}, 
+			function(httpResponse) {
+				//Redirect to Member's Page
+				if(httpResponse == "member_exists") {
+					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+				}
+			});
+	}); 
+}
 
 ); //end $(document).ready
 
