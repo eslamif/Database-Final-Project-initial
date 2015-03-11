@@ -19,8 +19,10 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	$password = $_POST['password'];	
 	$dob = $_POST['dob'];
 	
-	//Validate User Input
-		
+	//Validate First Name
+	if(validateName($f_name) == 0)
+		echo "invalid_first_name";
+	
 		
 		
 	//Connect to MySQL
@@ -137,6 +139,14 @@ function getUserAndPassword($mysqli) {
 	
 	$stmt->close();	
 	return $arrOuter;
+}
+
+//Validate Name
+function validateName($name) {
+	if (!preg_match('/[^A-Za-z]+/', $name) && strlen($name) <= 20)
+		return 1;	//name is valid
+	else
+		return 0;
 }
 
 //Track Session

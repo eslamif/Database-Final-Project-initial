@@ -46,11 +46,13 @@ header('Content-Type: text/html');
 					<li>
 						<label>First Name:</label>
 						<input id="f_name" type="text" name="f_name"> 
+						<label>(20 or less characters)</label>
 					</li>
 					
 					<li>
 						<label>Last Name:</label>
 						<input id="l_name" type="text" name="l_name"> 
+						<label>(20 or less characters)</label>
 					</li>		
 					
 					<li>
