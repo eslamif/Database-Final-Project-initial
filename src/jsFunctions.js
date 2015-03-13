@@ -3,6 +3,12 @@ $(document).ready(
 //Register New User
 function() {
 	$('#register').click(function() {
+		//Validate Registration Form user inputs
+		if(validateRegForm() == false) {
+			alert("Please fix the inputs highlighted in red");
+			return false;
+		}
+		
 		$.post("database.php?action=register", 
 		{
 			f_name: $('#f_name').val(), 
@@ -18,7 +24,7 @@ function() {
 				if(httpResponse == "user_registered") {
 					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
 				}
-			});
+			}); 
 	}); 
 },
 
@@ -46,6 +52,10 @@ function() {
 
 //Unhide Registration Form
 function unhideRegForm() {
+	//Set all registration form inputs as invalid
+	validFirstName = false;
+	
+	//Unhide Registration Form
 	$('#registerForm').css("display", "block");
 }
 
@@ -57,9 +67,17 @@ function validateFirstName() {
 			if(httpResponse == 'invalid') {
 				$('#f_name').css("background-color", "red");
 				alert("Your first name is invalid. Please enter a name with 20 or less letters.");
+				validFirstName = false;
 			}
 			else {
 				$('#f_name').css("background-color", "transparent");
+				validFirstName = true;
 			}
 		});
+}
+
+//Validate Registration Form user inputs
+function validateRegForm() {
+	if(validFirstName == false)
+		return false;
 }
