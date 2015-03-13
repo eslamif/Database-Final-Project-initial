@@ -41,6 +41,9 @@ function() {
 
 ); //end $(document).ready
 
+
+
+
 //Unhide Registration Form
 function unhideRegForm() {
 	$('#registerForm').css("display", "block");
@@ -55,9 +58,8 @@ function validateFirstName() {
 				$('#f_name').css("background-color", "red");
 				alert("Your first name is invalid. Please enter a name with 20 or less letters.");
 			}
-			else
+			else {
 				$('#f_name').css("background-color", "transparent");
-				
+			}
 		});
 }
-
