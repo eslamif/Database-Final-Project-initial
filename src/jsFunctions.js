@@ -5,7 +5,7 @@ function() {
 	$('#register').click(function() {
 		//Validate Registration Form user inputs
 		if(validateRegForm() == false) {
-			alert("Please fix the inputs highlighted in red");
+			alert("Please ensure you completed on fields and that no errors highlighted in red exist.");
 			return false;
 		}
 		
@@ -78,6 +78,8 @@ function validateFirstName() {
 
 //Validate Registration Form user inputs
 function validateRegForm() {
-	if(validFirstName == false)
+	if(validFirstName == true)
+		return true;
+	else
 		return false;
 }
