@@ -54,6 +54,7 @@ function() {
 function unhideRegForm() {
 	//Set all registration form inputs as invalid
 	validFirstName = false;
+	validLastName = false;
 	
 	//Unhide Registration Form
 	$('#registerForm').css("display", "block");
@@ -76,9 +77,26 @@ function validateFirstName() {
 		});
 }
 
-//Validate Registration Form user inputs
+//Validate Last Name of Registration Form
+function validateLastName() {
+		$.post("input_validation.php?action=validate&validate=l_name",
+		{l_name: $('#l_name').val()},
+		function(httpResponse) {
+			if(httpResponse == 'invalid') {
+				$('#l_name').css("background-color", "red");
+				alert("Your last name is invalid. Please enter a name with 20 or less letters.");
+				validLastName = false;
+			}
+			else {
+				$('#l_name').css("background-color", "transparent");
+				validLastName = true;
+			}
+		});
+}
+
+//Confirm all user inputs for the Registration Form are valid
 function validateRegForm() {
-	if(validFirstName == true)
+	if(validFirstName == true && validLastName == true)
 		return true;
 	else
 		return false;

@@ -51,7 +51,7 @@ header('Content-Type: text/html');
 					
 					<li>
 						<label>Last Name:</label>
-						<input id="l_name" type="text" name="l_name"> 
+						<input id="l_name" type="text" name="l_name" onblur="validateLastName()"> 
 						<label>(20 or less letters)</label>
 					</li>		
 					

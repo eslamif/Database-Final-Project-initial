@@ -20,6 +20,14 @@ if(isset($_GET['validate']) && $_GET['validate'] == 'f_name') {
 		echo "valid";
 }
 
+//Validate Last Name
+if(isset($_GET['validate']) && $_GET['validate'] == 'l_name') {
+	$l_name = $_POST['l_name'];
+	if(validateName($l_name) == 0)
+		echo "invalid";	
+	else if(validateName($l_name) == 1)
+		echo "valid";
+}
 
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
