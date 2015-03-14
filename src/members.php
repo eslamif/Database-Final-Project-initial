@@ -32,8 +32,30 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	<h3>Life Lessons Frozen in Time</h3>
 	
 	<!-- Greet Member via AJAX -->
-	<div id="regConfirmation"> 
+	<div id="greetMember"> 
+		<?php echo "Welcome " . ucfirst($_SESSION['f_name']) . "!"; ?>
 	</div>	
+	
+	<div id="quotesMenu">
+		<ul>
+			<h3>Quotes</h3>
+			<li><input type='button' value='View Latest Quote by You'></li>
+			<li><input type='button' value='View All Quotes by You'></li>			
+			<li><input type='button' value='View Latest Quote by Friends'></li>
+			<li><input type='button' value='View All Quotes by Friends'></li>
+		</ul>
+	</div>
+	
+	<div id="friendsMenu">
+		<ul>
+			<h3>Friends</h3>
+			<li><input type='button' value='View Friends List'></li>
+			<li><input type='button' value='Add Friend'></li>
+			<li><input type='button' value='Remove Friend'></li>
+		</ul>
+	</div>	
+	
+
 	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jsFunctions.js"></script>	
