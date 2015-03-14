@@ -29,6 +29,14 @@ if(isset($_GET['validate']) && $_GET['validate'] == 'l_name') {
 		echo "valid";
 }
 
+//Validate Email
+if(isset($_GET['validate']) && $_GET['validate'] == 'e_mail') {
+	$e_mail = $_POST['e_mail'];
+	if(validateEmail($e_mail) == 0)
+		echo "invalid";	
+	else if(validateEmail($e_mail) == 1)
+		echo "valid";
+}
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Validate Name
@@ -38,4 +46,14 @@ function validateName($name) {
 	else
 		return 0;
 }
+
+//Validate Email
+function validateEmail($e_mail) {
+	$regex = "/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+	if(preg_match($regex, $e_mail)) 
+	  return 1;
+	else 
+	  return 0;
+}
+
 ?>

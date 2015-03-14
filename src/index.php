@@ -57,7 +57,7 @@ header('Content-Type: text/html');
 					
 					<li>
 						<label>Email:</label>
-						<input id="e_mail" type="text" name="e_mail"> 
+						<input id="e_mail" type="text" name="e_mail" onblur="validateEmailAddress()"> 
 					</li>
 					
 					<li>

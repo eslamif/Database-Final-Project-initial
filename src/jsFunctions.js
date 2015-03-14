@@ -55,6 +55,7 @@ function unhideRegForm() {
 	//Set all registration form inputs as invalid
 	validFirstName = false;
 	validLastName = false;
+	validEmailAddress = false;
 	
 	//Unhide Registration Form
 	$('#registerForm').css("display", "block");
@@ -94,9 +95,26 @@ function validateLastName() {
 		});
 }
 
+//Validate Email of Registration Form
+function validateEmailAddress() {
+		$.post("input_validation.php?action=validate&validate=e_mail",
+		{e_mail: $('#e_mail').val()},
+		function(httpResponse) {
+			if(httpResponse == 'invalid') {
+				$('#e_mail').css("background-color", "red");
+				alert("Your E-mail is invalid. Please enter a proper e-mail address.");
+				validEmailAddress = false;
+			}
+			else {
+				$('#e_mail').css("background-color", "transparent");
+				validEmailAddress = true;
+			}
+		});
+}
+
 //Confirm all user inputs for the Registration Form are valid
 function validateRegForm() {
-	if(validFirstName == true && validLastName == true)
+	if(validFirstName == true && validLastName == true && validEmailAddress == true)
 		return true;
 	else
 		return false;
