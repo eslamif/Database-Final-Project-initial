@@ -37,6 +37,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		<?php echo "Welcome " . ucfirst($_SESSION['f_name']) . "!"; ?>
 	</div>	
 	
+	<section id="actionMenu">
 	<div id="quotesMenu">
 		<ul>
 			<h3>Quotes</h3>
@@ -56,6 +57,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 			<li><input type='button' value='Remove Friend'></li>
 		</ul>
 	</div>	
+	</section>
 	
 	<!-- Add New Quote -->
 	<div id="newQuoteForm" style="display: none;">	

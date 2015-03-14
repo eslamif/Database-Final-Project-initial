@@ -2,6 +2,10 @@
 	float:left;
 }
 
+#actionMenu ul{
+	list-style-type: none;
+}
+
 #friendsMenu {
 	float:left;
 }
