@@ -8,13 +8,13 @@ function() {
 			alert("Please ensure you completed on fields and that no errors highlighted in red exist.");
 			return false;
 		}
-		
+				
 		$.post("database.php?action=register", 
 		{
 			f_name: $('#f_name').val(), 
 			l_name: $('#l_name').val(),
-			e_mail: $('#e_mail').val(),
-			password: $('#password').val(),
+			emailAddress: $('#emailAddress').val(),
+			userPass: $('#userPass').val(),
 			dob: $('#dob').val()
 		}, 
 			function(httpResponse) {
@@ -33,8 +33,8 @@ function() {
 	$('#login').click(function() {
 		$.post("database.php?action=login", 
 		{
-			e_mail: $('#e_mail').val(),
-			password: $('#password').val()
+			emailAddress: $('#emailAddress').val(),
+			userPass: $('#userPass').val()
 		}, 
 			function(httpResponse) {
 				//Redirect to Member's Page
@@ -46,8 +46,6 @@ function() {
 }
 
 ); //end $(document).ready
-
-
 
 
 //Unhide Registration Form
@@ -97,16 +95,16 @@ function validateLastName() {
 
 //Validate Email of Registration Form
 function validateEmailAddress() {
-		$.post("input_validation.php?action=validate&validate=e_mail",
-		{e_mail: $('#e_mail').val()},
+		$.post("input_validation.php?action=validate&validate=emailAddress",
+		{emailAddress: $('#emailAddress').val()},
 		function(httpResponse) {
 			if(httpResponse == 'invalid') {
-				$('#e_mail').css("background-color", "red");
+				$('#emailAddress').css("background-color", "red");
 				alert("Your E-mail is invalid. Please enter a proper e-mail address.");
 				validEmailAddress = false;
 			}
 			else {
-				$('#e_mail').css("background-color", "transparent");
+				$('#emailAddress').css("background-color", "transparent");
 				validEmailAddress = true;
 			}
 		});

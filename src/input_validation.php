@@ -30,8 +30,8 @@ if(isset($_GET['validate']) && $_GET['validate'] == 'l_name') {
 }
 
 //Validate Email
-if(isset($_GET['validate']) && $_GET['validate'] == 'e_mail') {
-	$e_mail = $_POST['e_mail'];
+if(isset($_GET['validate']) && $_GET['validate'] == 'emailAddress') {
+	$e_mail = $_POST['emailAddress'];
 	if(validateEmail($e_mail) == 0)
 		echo "invalid";	
 	else if(validateEmail($e_mail) == 1)
@@ -49,11 +49,10 @@ function validateName($name) {
 
 //Validate Email
 function validateEmail($e_mail) {
-	$regex = "/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-	if(preg_match($regex, $e_mail)) 
-	  return 1;
-	else 
-	  return 0;
+    if (!filter_var($e_mail, FILTER_VALIDATE_EMAIL))
+		return 0;
+	else
+		return 1;
 }
 
 ?>

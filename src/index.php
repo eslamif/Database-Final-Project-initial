@@ -57,12 +57,12 @@ header('Content-Type: text/html');
 					
 					<li>
 						<label>Email:</label>
-						<input id="e_mail" type="text" name="e_mail" onblur="validateEmailAddress()"> 
+						<input id="emailAddress" type="text" name="emailAddress" onblur="validateEmailAddress()">
 					</li>
 					
 					<li>
 						<label>Password:</label>
-						<input id="password" type="password" name="password"> 
+						<input id="userPass" type="password" name="userPass"> 
 					</li>		
 					
 					<li>

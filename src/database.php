@@ -15,8 +15,8 @@ if(strtolower($method) != 'post' || !isset($_GET['action']) || $_GET['action'] !
 if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	$f_name = $_POST['f_name'];
 	$l_name = $_POST['l_name'];
-	$e_mail = $_POST['e_mail'];
-	$password = $_POST['password'];	
+	$e_mail = $_POST['emailAddress'];
+	$password = $_POST['userPass'];	
 	$dob = $_POST['dob'];
 			
 	//Connect to MySQL
@@ -32,12 +32,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 
 //Login Existing User
 if(isset($_GET['action']) && $_GET['action'] == 'login') {
-	$e_mail = $_POST['e_mail'];
-	$password = $_POST['password'];		
-	
-	//Validate User Input
-		
-		
+	$e_mail = $_POST['emailAddress'];
+	$password = $_POST['userPass'];		
 		
 	//Connect to MySQL
 	$mysqli = connectToSql();
@@ -72,8 +68,8 @@ function setSqlNewUser($http, $mysqli) {
 	//Variables to set
 	$f_name = $http['f_name'];
 	$l_name = $http['l_name'];
-	$email = $http['e_mail'];
-	$pass = $http['password'];
+	$e_mail = $http['emailAddress'];
+	$pass = $http['userPass'];
 	$dob = $http['dob'];
 	
 	//Prepared Statement - prepare
@@ -84,7 +80,7 @@ function setSqlNewUser($http, $mysqli) {
 	}	
 	
 	//Prepared Statement - bind and execute 
-	if (!$stmt->bind_param('sssss', $f_name, $l_name, $email, $pass, $dob)) {
+	if (!$stmt->bind_param('sssss', $f_name, $l_name, $e_mail, $pass, $dob)) {
 		//echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
