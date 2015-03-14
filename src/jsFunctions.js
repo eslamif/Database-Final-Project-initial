@@ -54,6 +54,7 @@ function unhideRegForm() {
 	validFirstName = false;
 	validLastName = false;
 	validEmailAddress = false;
+	validUserPassword = false;
 	
 	//Unhide Registration Form
 	$('#registerForm').css("display", "block");
@@ -110,9 +111,27 @@ function validateEmailAddress() {
 		});
 }
 
+//Validate Password of Registration Form
+function validatePassword() {
+		$.post("input_validation.php?action=validate&validate=userPassword",
+		{userPass: $('#userPass').val()},
+		function(httpResponse) {
+			if(httpResponse == 'invalid') {
+				$('#userPass').css("background-color", "red");
+				alert("Your Password is invalid. Please ensure it's between 6-10 characters.");
+				validUserPassword = false;
+			}
+			else {
+				$('#userPass').css("background-color", "transparent");
+				validUserPassword = true;
+			}
+		});	
+}
+
 //Confirm all user inputs for the Registration Form are valid
 function validateRegForm() {
-	if(validFirstName == true && validLastName == true && validEmailAddress == true)
+	if(validFirstName == true && validLastName == true && validEmailAddress == true
+		&& validUserPassword == true)
 		return true;
 	else
 		return false;

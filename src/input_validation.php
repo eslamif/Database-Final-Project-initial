@@ -38,6 +38,15 @@ if(isset($_GET['validate']) && $_GET['validate'] == 'emailAddress') {
 		echo "valid";
 }
 
+//Validate Password
+if(isset($_GET['validate']) && $_GET['validate'] == 'userPassword') {
+	$userPass = $_POST['userPass'];
+	if(validatePassword($userPass) == 0)
+		echo "invalid";	
+	else if(validatePassword($userPass) == 1)
+		echo "valid";
+}
+
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Validate Name
 function validateName($name) {
@@ -53,6 +62,14 @@ function validateEmail($e_mail) {
 		return 0;
 	else
 		return 1;
+}
+
+//Validate Password
+function validatePassword($userPass) {
+	if(strlen($userPass) >= 4 && strlen($userPass) <= 10)
+		return 1;
+	else
+		return 0;
 }
 
 ?>

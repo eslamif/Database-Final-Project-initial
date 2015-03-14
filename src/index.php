@@ -62,7 +62,7 @@ header('Content-Type: text/html');
 					
 					<li>
 						<label>Password:</label>
-						<input id="userPass" type="password" name="userPass"> 
+						<input id="userPass" type="password" name="userPass" onblur="validatePassword()"> 
 					</li>		
 					
 					<li>
