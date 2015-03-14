@@ -137,7 +137,27 @@ function validateRegForm() {
 		return false;
 }
 
-//Unhide Add Quote Form
+//Unhide newQuoteForm
 function unhideAddQuote() {
+	//Set all Add Quote form inputs as invalid
+	validQuoteTitle = false;
+	
 	$('#newQuoteForm').css("display", "block");		
 }
+
+//validate quoteTitle of newQuoteForm
+function validateQuoteTitle() {
+	var titleLength = $('#quote_title').val().length;
+	if(titleLength < 4 || titleLength > 20) {
+		$('#quote_title').css("background-color", "red");
+		alert("Please enter a title between 4-20 characters.");
+		validQuoteTitle = false;
+	}
+	else if(titleLength >= 4 && titleLength <= 20) {
+		$('#quote_title').css("background-color", "transparent");
+		validQuoteTitle = true;
+	}
+}
+
+
+

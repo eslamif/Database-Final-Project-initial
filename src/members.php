@@ -67,7 +67,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 				<li>
 					<label>Title:</label>
 					<input id="quote_title" type="text" name="quote_title" onblur="validateQuoteTitle()"> 
-					<label>(20 or less letters)</label>
+					<label>(4-20 characters)</label>
 				</li>
 				
 				<li>
@@ -79,7 +79,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 
 				<li>
 					<label>Topic:</label>
-					<input id="quote_topic" type="text" name="quote_topic" onblur="validateQuoteTitle()"
+					<input id="quote_topic" type="text" name="quote_topic">
 					placeholder="What topic to file under?"> 
 					<input type="button" value="View Your Existing Topics">
 				</li>
