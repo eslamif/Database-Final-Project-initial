@@ -136,3 +136,8 @@ function validateRegForm() {
 	else
 		return false;
 }
+
+//Unhide Add Quote Form
+function unhideAddQuote() {
+	$('#newQuoteForm').css("display", "block");		
+}

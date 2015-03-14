@@ -1,0 +1,15 @@
+#quotesMenu {
+	float:left;
+}
+
+#friendsMenu {
+	float:left;
+}
+
+#newQuoteForm {
+	clear: both;
+}
+
+#newQuoteForm  textarea {
+	text-align: justify;
+}

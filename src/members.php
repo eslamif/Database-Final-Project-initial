@@ -24,6 +24,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Wiki Quote</title>
 </head>
 
@@ -39,6 +40,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	<div id="quotesMenu">
 		<ul>
 			<h3>Quotes</h3>
+			<li><input type='button' value='Add Quote' onClick='unhideAddQuote()';></li>
 			<li><input type='button' value='View Latest Quote by You'></li>
 			<li><input type='button' value='View All Quotes by You'></li>			
 			<li><input type='button' value='View Latest Quote by Friends'></li>
@@ -55,7 +57,33 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		</ul>
 	</div>	
 	
+	<!-- Add New Quote -->
+	<div id="newQuoteForm" style="display: none;">	
+		<form id="newQuote">
+		<legend>Please complete the following</legend>
+			<ul>
+				<li>
+					<label>Title:</label>
+					<input id="quote_title" type="text" name="quote_title" onblur="validateQuoteTitle()"> 
+					<label>(20 or less letters)</label>
+				</li>
+				
+				<li>
+					<label>Quote:</label>
+					<textarea id="quote_meaning" rows="4" cols="50" name="quote_meaning" form="newQuote"
+					placeholder="Enter Quote..."></textarea>
+					<label>(50 or less characters)</label>
+				</li>	
 
+				<li>
+					<label>Topic:</label>
+					<input id="quote_topic" type="text" name="quote_topic" onblur="validateQuoteTitle()"
+					placeholder="What topic to file under?"> 
+					<input type="button" value="View Your Existing Topics">
+				</li>
+			</ul>	
+		</form>
+	</div>
 	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jsFunctions.js"></script>	
