@@ -141,6 +141,8 @@ function validateRegForm() {
 function unhideAddQuote() {
 	//Set all Add Quote form inputs as invalid
 	validQuoteTitle = false;
+	validQuote = false;
+	validQuoteTopic = false;
 	
 	$('#newQuoteForm').css("display", "block");		
 }
@@ -159,5 +161,31 @@ function validateQuoteTitle() {
 	}
 }
 
+//Validate quote of newQuoteForm
+function validateQuote() {
+	var quote = $('#quote').val().length;
+	if(quote < 8 || quote > 100) {
+		$('#quote').css("background-color", "red");
+		alert("Please enter a quote between 8-100 characters.");
+		validQuote = false;
+	}
+	else if(quote >= 8 && quote <= 100) {
+		$('#quote').css("background-color", "transparent");
+		validQuote = true;
+	}	
+}
 
+//validate quote_topic of newQuoteForm
+function validateQuoteTopic() {
+	var topicLength = $('#quote_topic').val().length;
+	if(topicLength < 4 || topicLength > 20) {
+		$('#quote_topic').css("background-color", "red");
+		alert("Please enter a topic between 4-20 characters.");
+		validQuoteTopic = false;
+	}
+	else if(topicLength >= 4 && topicLength <= 20) {
+		$('#quote_topic').css("background-color", "transparent");
+		validQuoteTopic = true;
+	}
+}
 

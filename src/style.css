@@ -6,6 +6,10 @@
 	list-style-type: none;
 }
 
+#newQuoteForm ul {
+	list-style-type: none;
+}
+
 #friendsMenu {
 	float:left;
 }

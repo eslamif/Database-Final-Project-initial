@@ -62,6 +62,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	<!-- Add New Quote -->
 	<div id="newQuoteForm" style="display: none;">	
 		<form id="newQuote">
+		</br>
 		<legend>Please complete the following</legend>
 			<ul>
 				<li>
@@ -72,16 +73,21 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 				
 				<li>
 					<label>Quote:</label>
-					<textarea id="quote_meaning" rows="4" cols="50" name="quote_meaning" form="newQuote"
-					placeholder="Enter Quote..."></textarea>
-					<label>(50 or less characters)</label>
+					<textarea id="quote" rows="4" cols="50" name="quote" form="newQuote"
+					placeholder="Enter Quote..." onblur="validateQuote()"></textarea>
+					<label>(8-100 characters)</label>
 				</li>	
 
 				<li>
 					<label>Topic:</label>
-					<input id="quote_topic" type="text" name="quote_topic">
-					placeholder="What topic to file under?"> 
+					<input id="quote_topic" type="text" name="quote_topic" onblur="validateQuoteTopic()"
+					placeholder="What topic to file under?">
+					<label>(4-20 characters)</label>
 					<input type="button" value="View Your Existing Topics">
+				</li>
+				
+				<li>
+					<input type="button" value="Add Quote">
 				</li>
 			</ul>	
 		</form>
