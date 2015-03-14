@@ -5,7 +5,7 @@ function() {
 	$('#register').click(function() {
 		//Validate Registration Form user inputs
 		if(validateRegForm() == false) {
-			alert("Please ensure you completed on fields and that no errors highlighted in red exist.");
+			alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
 			return false;
 		}
 				
