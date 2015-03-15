@@ -44,6 +44,22 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
 	echo $jsonStr;	
 }
 
+//Add New Quote
+if(isset($_GET['action']) && $_GET['action'] == 'add_quote') {
+	$quote_title = $_POST['quote_title'];
+	$quote = $_POST['quote'];
+	$quote_topic = $_POST['quote_topic'];
+			
+	//Connect to MySQL
+	$mysqli = connectToSql();
+	
+	//Save New User to Database & Start Session
+	if(setSqlNewUser($_POST, $mysqli)) {
+		session_start();
+		session($_POST);
+		echo "quote_added";
+	}
+}
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Connect to mySQL

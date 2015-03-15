@@ -46,14 +46,15 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 			<li><input type='button' value='View All Quotes by You'></li>			
 			<li><input type='button' value='View Latest Quote by Friends'></li>
 			<li><input type='button' value='View All Quotes by Friends'></li>
+			<li><input type='button' value='Delete Quote'></li>
 		</ul>
 	</div>
 	
 	<div id="friendsMenu">
 		<ul>
 			<h3>Friends</h3>
+			<li><input type='button' value='Add Friend' onClick="unhideAddFriend()"></li>			
 			<li><input type='button' value='View Friends List'></li>
-			<li><input type='button' value='Add Friend'></li>
 			<li><input type='button' value='Remove Friend'></li>
 		</ul>
 	</div>	
@@ -62,8 +63,10 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	<!-- Add New Quote -->
 	<div id="newQuoteForm" style="display: none;">	
 		<form id="newQuote">
+		<fieldset>
+		<legend>Add New Quote</legend>
 		</br>
-		<legend>Please complete the following</legend>
+		<label>Please complete the following:</label>
 			<ul>
 				<li>
 					<label>Title:</label>
@@ -87,9 +90,39 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 				</li>
 				
 				<li>
-					<input type="button" value="Add Quote">
+					<input id="addQuote" type="button" value="Add Quote">
 				</li>
 			</ul>	
+		</fieldset>
+		</form>
+	</div>
+	
+	<!-- Add New Friend -->
+	<div id="newFriend" style="display: none">
+		<form id="newFriendForm">
+		<fieldset>
+		<legend>Add New Friend</legend>
+		</br>
+		<label>Please complete the following:</label>
+		<ul>
+			<li>
+				<label>Friend's First Name:</label>
+				<input id="friend_f_name" type="text" name="friend_f_name" onblur="validateFirstName()"> 
+				<label>(20 or less letters)</label>	
+			</li>
+			
+			<li>
+				<label>Friend's Last Name:</label>
+				<input id="friend_l_name" type="text" name="friend_l_name" onblur="validateLastName()"> 
+				<label>(20 or less letters)</label>	
+			</li>
+			
+			<li>
+				<label>Friend's Email Address:</label>
+				<input id="friend_email" type="text" name="friend_email" onblur="validateEmailAddress()"> 
+			</li>
+		</ul>
+		</fieldset>
 		</form>
 	</div>
 	

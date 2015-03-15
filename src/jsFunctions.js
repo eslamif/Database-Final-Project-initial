@@ -43,6 +43,33 @@ function() {
 				}
 			});
 	}); 
+},
+
+//Add New Quote
+function() {
+	$('#addQuote').click(function() {
+		//Validate newQuoteForm Form user inputs
+		if(validateQuoteForm() == false) {
+			alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
+			return false;
+		}
+				
+		$.post("database.php?action=add_quote", 
+		{
+			quote_title: $('#quote_title').val(), 
+			quote: $('#quote').val(),
+			quote_topic: $('#quote_topic').val()
+		}, 
+			function(httpResponse) {
+				//$('#regConfirmation').text(httpResponse);
+
+				//Redirect New Member to Member's Page
+				if(httpResponse == "quote_added") {
+					alert("Your quoted was added successfully");
+					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+				}
+			}); 
+	}); 
 }
 
 ); //end $(document).ready
@@ -60,7 +87,7 @@ function unhideRegForm() {
 	$('#registerForm').css("display", "block");
 }
 
-//Validate First Name of Registration Form
+//Validate First Name 
 function validateFirstName() {
 		$.post("input_validation.php?action=validate&validate=f_name",
 		{f_name: $('#f_name').val()},
@@ -77,7 +104,7 @@ function validateFirstName() {
 		});
 }
 
-//Validate Last Name of Registration Form
+//Validate Last Name 
 function validateLastName() {
 		$.post("input_validation.php?action=validate&validate=l_name",
 		{l_name: $('#l_name').val()},
@@ -189,3 +216,21 @@ function validateQuoteTopic() {
 	}
 }
 
+//Confirm all user inputs for the newQuoteForm are valid
+function validateQuoteForm() {
+	if(validQuoteTitle == true && validQuote == true && validQuoteTopic == true)
+		return true;
+	else
+		return false;
+}
+
+//Unhide newFriend Form
+function unhideAddFriend() {
+	//Set all registration form inputs as invalid
+	validFriendFirstName = false;
+	validFriendLastName = false;
+	validFriendEmailAddress = false;
+	
+	//Unhide Registration Form
+	$('#newFriend').css("display", "block");	
+}

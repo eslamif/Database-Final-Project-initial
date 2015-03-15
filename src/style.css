@@ -2,11 +2,7 @@
 	float:left;
 }
 
-#actionMenu ul{
-	list-style-type: none;
-}
-
-#newQuoteForm ul {
+#actionMenu ul, #newQuoteForm ul, #newFriend ul{
 	list-style-type: none;
 }
 
@@ -14,9 +10,10 @@
 	float:left;
 }
 
-#newQuoteForm {
+#newQuoteForm, #newFriend {
 	clear: both;
 }
+
 
 #newQuoteForm  textarea {
 	text-align: justify;

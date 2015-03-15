@@ -38,10 +38,14 @@ header('Content-Type: text/html');
 	<!-- Register New Account -->		
 	<div id="newUser">
 		<input id="createAccount" type="button" value="Create New Account" onClick="unhideRegForm()">	
-
+		</br>
+		</br>
 		<div id="registerForm" style="display: none;">	
 			<form id="newMembers">
-			<legend>Please complete the following</legend>
+			<fieldset>
+			<legend>Register New Account</legend>
+				</br>
+				<label>Please complete the following</label>
 				<ul>
 					<li>
 						<label>First Name:</label>
@@ -71,6 +75,7 @@ header('Content-Type: text/html');
 					</li>						
 				</ul>
 				<input id="register" type="button" value="Register"> 
+			</fieldset>
 			</form>
 		</div>
 	</div>
