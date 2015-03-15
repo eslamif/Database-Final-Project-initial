@@ -7,7 +7,7 @@ header('Content-Type: text/html');
 //Validate access is via POST REQUEST and from index.php
 $method = $_SERVER['REQUEST_METHOD'];
 if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] != 'register' &&
-	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote')) {
+	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote' && $_GET['action'] != 'add_friend')) {
 	echo "You may not access this page directly. Please go back to the 
 	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
 }
@@ -27,7 +27,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	
 	
 	//Save New User to Database & Start Session
-	if(setSqlNewUser($_POST, $mysqli)) {
+	if(setSqlNewUser($_POST, $mysqli) == true) {
 		session_start();
 		session($_POST);
 		echo "user_registered";
@@ -77,6 +77,27 @@ if(isset($_GET['action']) && $_GET['action'] == 'add_quote') {
 	else
 		echo "DNE";
 }
+
+//Add Friend
+if(isset($_GET['action']) && $_GET['action'] == 'add_friend') {
+	$friend_f_name = $_POST['friend_f_name'];
+	$friend_l_name = $_POST['friend_l_name'];
+	$friend_email = $_POST['friend_email'];
+			
+	//Connect to MySQL
+	$mysqli = connectToSql();
+	
+	//Confirm user does not already exist (key = email)
+	
+	
+	//Save Friend to database
+	if(setFriend($mysqli, $friend_f_name, $friend_l_name, $friend_email) == true) {
+		echo "friend_added";
+	}
+	else
+		echo "error occrere";
+}
+
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Connect to mySQL
@@ -256,6 +277,32 @@ function setQuote($mysqli, $quote_title, $quote, $quote_topic) {
 	$stmt->close();		//close statement for topics table
 	
 	return true;	
+}
+
+//Store New Friend to database
+function setFriend($mysqli, $friend_f_name, $friend_l_name, $friend_email) {
+	//Prepared Statement - prepare for quotes table
+	if (!($stmt = $mysqli->prepare("INSERT INTO friends(f_name, l_name, email) VALUES (?, ?, ?)"))) {
+		 //echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		 echo "An error occurred while communicating with the database server. Please try again later.";
+		 return false;
+	}	
+	
+	//Prepared Statement - bind and execute for topics table
+	if (!$stmt->bind_param('sss', $friend_f_name, $friend_l_name, $friend_email)) {
+		//echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+		return false;
+	}	
+	
+	//Execute for topics table
+	if (!$stmt->execute()) {  
+		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+		return false;
+	}
+	$stmt->close();		//close statement for topics table	
+	return true;
 }
 
 ?>

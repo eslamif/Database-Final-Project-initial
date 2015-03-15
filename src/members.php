@@ -113,20 +113,24 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		<ul>
 			<li>
 				<label>Friend's First Name:</label>
-				<input id="friend_f_name" type="text" name="friend_f_name" onblur="validateFirstName()"> 
-				<label>(20 or less letters)</label>	
+				<input id="friend_f_name" type="text" name="friend_f_name" onblur="validateFriendFName()"> 
+				<label>(2-20 letters)</label>
 			</li>
 			
 			<li>
 				<label>Friend's Last Name:</label>
-				<input id="friend_l_name" type="text" name="friend_l_name" onblur="validateLastName()"> 
-				<label>(20 or less letters)</label>	
+				<input id="friend_l_name" type="text" name="friend_l_name" onblur="validateFriendLName()"> 
+				<label>(2-20 letters)</label>
 			</li>
 			
 			<li>
 				<label>Friend's Email Address:</label>
-				<input id="friend_email" type="text" name="friend_email" onblur="validateEmailAddress()"> 
+				<input id="friend_email" type="text" name="friend_email" onblur="validateFriendEmail()"> 
 			</li>
+
+			<li>
+				<input id="addFriend" type="button" value="Add Friend" onClick="addNewFriend()">
+			</li> 		
 		</ul>
 		</fieldset>
 		</form>

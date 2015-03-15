@@ -241,3 +241,82 @@ function logOut() {
 	window.location = "http://localhost/myhost-exemple/Final%20Project/src/database.php?action=end";
 }
 
+//Validate newFriendForm User Inputs
+//Validate Friend First Name 
+function validateFriendFName() {
+	var length = $('#friend_f_name').val().length;
+	if(length < 2 || length > 20) {
+		$('#friend_f_name').css("background-color", "red");
+		alert("Please enter a name between 2-20 characters.");
+		$('#friend_f_name').focus();
+		validFriendFirstName = false;
+	}
+	else if(length >= 2 && length <= 20) {
+		$('#friend_f_name').css("background-color", "transparent");
+		validFriendFirstName = true;
+	}
+}
+
+//Validate Friend Last Name 
+function validateFriendLName() {
+	var length = $('#friend_l_name').val().length;
+	if(length < 2 || length > 20) {
+		$('#friend_l_name').css("background-color", "red");
+		alert("Please enter a name between 2-20 characters.");
+		$('#friend_l_name').focus();
+		validFriendLastName = false;
+	}
+	else if(length >= 2 && length <= 20) {
+		$('#friend_l_name').css("background-color", "transparent");
+		validFriendLastName = true;
+	}
+}
+
+//Validate Friend Email 
+function validateFriendEmail() {
+		$.post("input_validation.php?action=validate&validate=emailAddress",
+		{emailAddress: $('#friend_email').val()},
+		function(httpResponse) {
+			if(httpResponse == 'invalid') {
+				$('#friend_email').css("background-color", "red");
+				alert("Your E-mail is invalid. Please enter a proper e-mail address.");
+				$('#friend_email').focus();
+				validFriendEmailAddress = false;
+			}
+			else {
+				$('#friend_email').css("background-color", "transparent");
+				validFriendEmailAddress = true;
+			}
+		});
+}
+
+function validateAddFriendForm() {
+	if(validFriendFirstName == true && validFriendLastName == true && validFriendEmailAddress == true)
+		return true;
+	else
+		return false;	
+}
+
+//Add New Friend to database
+function addNewFriend() {
+	//Validate newQuoteForm Form user inputs
+	if(validateAddFriendForm() == false) {
+		alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
+		return false;
+	}
+			
+	$.post("database.php?action=add_friend", 
+	{
+		friend_f_name: $('#friend_f_name').val(), 
+		friend_l_name: $('#friend_l_name').val(),
+		friend_email: $('#friend_email').val()
+	}, 
+		function(httpResponse) {
+			//Redirect New Member to Member's Page
+			if(httpResponse == "friend_added") {
+				alert("Your friend was added successfully");
+				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+			}
+		}); 
+}
+
