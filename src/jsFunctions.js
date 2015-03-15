@@ -178,6 +178,7 @@ function validateQuoteTitle() {
 	if(titleLength < 4 || titleLength > 20) {
 		$('#quote_title').css("background-color", "red");
 		alert("Please enter a title between 4-20 characters.");
+		$('#quote_title').focus();
 		validQuoteTitle = false;
 	}
 	else if(titleLength >= 4 && titleLength <= 20) {
@@ -192,6 +193,7 @@ function validateQuote() {
 	if(quote < 8 || quote > 100) {
 		$('#quote').css("background-color", "red");
 		alert("Please enter a quote between 8-100 characters.");
+		$('#quote').focus();
 		validQuote = false;
 	}
 	else if(quote >= 8 && quote <= 100) {
@@ -206,6 +208,7 @@ function validateQuoteTopic() {
 	if(topicLength < 4 || topicLength > 20) {
 		$('#quote_topic').css("background-color", "red");
 		alert("Please enter a topic between 4-20 characters.");
+		$('#quote_topic').focus();
 		validQuoteTopic = false;
 	}
 	else if(topicLength >= 4 && topicLength <= 20) {
