@@ -50,7 +50,7 @@ if(isset($_GET['validate']) && $_GET['validate'] == 'userPassword') {
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Validate Name
 function validateName($name) {
-	if (!preg_match('/[^A-Za-z]+/', $name) && strlen($name) <= 20)
+	if (!preg_match('/[^A-Za-z]+/', $name) && strlen($name) >= 2 && strlen($name) <= 20)
 		return 1;	//name is valid
 	else
 		return 0;

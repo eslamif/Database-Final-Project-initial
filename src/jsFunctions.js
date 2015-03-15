@@ -92,7 +92,7 @@ function validateFirstName() {
 		function(httpResponse) {
 			if(httpResponse == 'invalid') {
 				$('#f_name').css("background-color", "red");
-				alert("Your first name is invalid. Please enter a name with 20 or less letters.");
+				alert("Your first name is invalid. Please enter a name between 2-20 letters.");
 				validFirstName = false;
 			}
 			else {
@@ -109,7 +109,7 @@ function validateLastName() {
 		function(httpResponse) {
 			if(httpResponse == 'invalid') {
 				$('#l_name').css("background-color", "red");
-				alert("Your last name is invalid. Please enter a name with 20 or less letters.");
+				alert("Your last name is invalid. Please enter a name between 2-20 letters.");
 				validLastName = false;
 			}
 			else {

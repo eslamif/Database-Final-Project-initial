@@ -55,13 +55,13 @@ header('Content-Type: text/html');
 					<li>
 						<label>First Name:</label>
 						<input id="f_name" type="text" name="f_name" onblur="validateFirstName()"> 
-						<label>(20 or less letters)</label>
+						<label>(2-20 letters)</label>
 					</li>
 					
 					<li>
 						<label>Last Name:</label>
 						<input id="l_name" type="text" name="l_name" onblur="validateLastName()"> 
-						<label>(20 or less letters)</label>
+						<label>(2-20 letters)</label>
 					</li>		
 					
 					<li>
@@ -72,6 +72,7 @@ header('Content-Type: text/html');
 					<li>
 						<label>Password:</label>
 						<input id="userPass" type="password" name="userPass" onblur="validatePassword()"> 
+						<label>(6-20 characters)</label>
 					</li>		
 					
 					<li>
