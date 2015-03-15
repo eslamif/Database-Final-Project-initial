@@ -96,7 +96,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 				</li>
 				
 				<li>
-					<input id="addQuote" type="button" value="Add Quote">
+					<input id="addQuote" type="button" value="Add Quote" onClick="addNewQuote()">
 				</li>
 			</ul>	
 		</fieldset>

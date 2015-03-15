@@ -1,35 +1,31 @@
 $(document).ready(
-
+); //end $(document).ready
 
 
 //Add New Quote
-function() {
-	$('#addQuote').click(function() {
-		//Validate newQuoteForm Form user inputs
-		if(validateQuoteForm() == false) {
-			alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
-			return false;
-		}
-				
-		$.post("database.php?action=add_quote", 
-		{
-			quote_title: $('#quote_title').val(), 
-			quote: $('#quote').val(),
-			quote_topic: $('#quote_topic').val()
-		}, 
-			function(httpResponse) {
-				//$('#regConfirmation').text(httpResponse);
-
-				//Redirect New Member to Member's Page
-				if(httpResponse == "quote_added") {
-					alert("Your quoted was added successfully");
-					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
-				}
-			}); 
-	}); 
+function addNewQuote() {
+	//Validate newQuoteForm Form user inputs
+	if(validateQuoteForm() == false) {
+		alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
+		return false;
+	}
+			
+	$.post("database.php?action=add_quote", 
+	{
+		quote_title: $('#quote_title').val(), 
+		quote: $('#quote').val(),
+		quote_topic: $('#quote_topic').val()
+	}, 
+		function(httpResponse) {
+			//Redirect New Member to Member's Page
+			if(httpResponse == "quote_added") {
+				alert("Your quoted was added successfully");
+				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+			}
+		}); 
 }
 
-); //end $(document).ready
+
 
 //Login Existing User
 function loginMember() {

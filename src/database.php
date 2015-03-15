@@ -7,7 +7,7 @@ header('Content-Type: text/html');
 //Validate access is via POST REQUEST and from index.php
 $method = $_SERVER['REQUEST_METHOD'];
 if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] != 'register' &&
-	$_GET['action'] != 'login')) {
+	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote')) {
 	echo "You may not access this page directly. Please go back to the 
 	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
 }
@@ -70,13 +70,12 @@ if(isset($_GET['action']) && $_GET['action'] == 'add_quote') {
 			
 	//Connect to MySQL
 	$mysqli = connectToSql();
-	
-	//Save New User to Database & Start Session
-	if(setSqlNewUser($_POST, $mysqli)) {
-		session_start();
-		session($_POST);
+
+	//Add quote to database
+	if(setQuote($mysqli, $quote_title, $quote, $quote_topic) == true)
 		echo "quote_added";
-	}
+	else
+		echo "DNE";
 }
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
@@ -208,6 +207,39 @@ function isUserInDb($DbUserAndPass, $inputEmail, $inputPass) {
 	else
 		$i++;
 	}
+}
+
+//Add quote to database
+function setQuote($mysqli, $quote_title, $quote, $quote_topic) {
+	/*
+	//Variables to set
+	$quote_title = $http['quote_title'];
+	$quote = $http['quote'];
+	$quote_topic = $http['quote_topic'];
+	*/
+	
+	//Prepared Statement - prepare
+	if (!($stmt = $mysqli->prepare("INSERT INTO quotes(title, quote) VALUES (?, ?)"))) {
+		 //echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		 echo "An error occurred while communicating with the database server. Please try again later.";
+		 return false;
+	}	
+	
+	//Prepared Statement - bind and execute 
+	if (!$stmt->bind_param('ss', $quote_title, $quote)) {
+		//echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+		return false;
+	}	
+	
+	if (!$stmt->execute()) {
+		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+		return false;
+	}
+	
+	$stmt->close();		//close statement
+	return true;	
 }
 
 ?>
