@@ -32,6 +32,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 		session($_POST);
 		echo "user_registered";
 	}
+	
 }
 
 //Login Existing User
@@ -46,10 +47,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
 	$DbUserAndPass = getUserAndPassword($mysqli);		//Get all users & passwords from database
 	$jsonStr = json_encode($DbUserAndPass);				//encode to JSON string
 	
-	if(isEmailInDb($DbUserAndPass, $inputEmail) == true)	//Validate Email		
+	if(isEmailInDb($DbUserAndPass, $inputEmail) == true) {	//Validate Email		
 		echo "member_exists";
+		
+		//Start Tracking Session
+		session_start();
+		session($_POST);		
+	}
+	else
+		echo "DNE";
 
-	
 
 }
 

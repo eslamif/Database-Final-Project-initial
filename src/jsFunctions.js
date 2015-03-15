@@ -1,32 +1,6 @@
 $(document).ready(
 
-//Register New User
-function() {
-	$('#register').click(function() {
-		//Validate Registration Form user inputs
-		if(validateRegForm() == false) {
-			alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
-			return false;
-		}
-				
-		$.post("database.php?action=register", 
-		{
-			f_name: $('#f_name').val(), 
-			l_name: $('#l_name').val(),
-			emailAddress: $('#emailAddress').val(),
-			userPass: $('#userPass').val(),
-			dob: $('#dob').val()
-		}, 
-			function(httpResponse) {
-				//$('#regConfirmation').text(httpResponse);
 
-				//Redirect New Member to Member's Page
-				if(httpResponse == "user_registered") {
-					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
-				}
-			}); 
-	}); 
-},
 
 //Add New Quote
 function() {
@@ -71,6 +45,32 @@ function loginMember() {
 			else
 				alert("The email and password don't match an existing account. Please try again or register a new account");
 		});
+}
+
+//Register New User
+function registerUser() {
+	//Validate Registration Form user inputs
+	if(validateRegForm() == false) {
+		alert("Please ensure you completed all fields and that all errors highlighted in red are fixed.");
+		return false;
+	}
+			
+	$.post("database.php?action=register", 
+	{
+		f_name: $('#f_name').val(), 
+		l_name: $('#l_name').val(),
+		emailAddress: $('#emailAddress').val(),
+		userPass: $('#userPass').val(),
+		dob: $('#dob').val()
+	}, 
+		function(httpResponse) {
+			//$('#regConfirmation').text(httpResponse);
+
+			//Redirect New Member to Member's Page
+			if(httpResponse == "user_registered") {
+				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+			}
+		}); 
 }
 
 //Unhide Registration Form

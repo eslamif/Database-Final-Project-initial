@@ -79,7 +79,7 @@ header('Content-Type: text/html');
 						<input id="dob" type="date" name="dob"> 
 					</li>						
 				</ul>
-				<input id="register" type="button" value="Register"> 
+				<input id="register" type="button" value="Register" onClick="registerUser()"> 
 			</fieldset>
 			</form>
 		</div>
