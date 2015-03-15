@@ -6,7 +6,8 @@ header('Content-Type: text/html');
 
 //Validate access is via POST REQUEST and from index.php
 $method = $_SERVER['REQUEST_METHOD'];
-if(strtolower($method) != 'post' || !isset($_GET['action']) || $_GET['action'] != 'register') {
+if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] != 'register' &&
+	$_GET['action'] != 'login')) {
 	echo "You may not access this page directly. Please go back to the 
 	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
 }
@@ -35,16 +36,21 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 
 //Login Existing User
 if(isset($_GET['action']) && $_GET['action'] == 'login') {
-	$e_mail = $_POST['emailAddress'];
-	$password = $_POST['userPass'];		
+	$inputEmail = $_POST['memberEmail'];
+	$inputPass = $_POST['memberPass'];		
 		
 	//Connect to MySQL
 	$mysqli = connectToSql();
 
-	//Validate User Exists
-	$userAndPass = getUserAndPassword($mysqli);
-	$jsonStr = json_encode($userAndPass);		//encode to JSON string
-	echo $jsonStr;	
+	//Validate if user exists in database
+	$DbUserAndPass = getUserAndPassword($mysqli);		//Get all users & passwords from database
+	$jsonStr = json_encode($DbUserAndPass);				//encode to JSON string
+	
+	if(isEmailInDb($DbUserAndPass, $inputEmail) == true)	//Validate Email		
+		echo "member_exists";
+
+	
+
 }
 
 //Add New Quote
@@ -177,4 +183,13 @@ function session($http) {
 		}	
 	}
 }
+
+function isEmailInDb($DbUserAndPass, $inputEmail) {
+	foreach($DbUserAndPass as $dbEmail) {
+		if($dbEmail[0] == $inputEmail)
+			return true;
+	}
+	return false;
+}
+
 ?>

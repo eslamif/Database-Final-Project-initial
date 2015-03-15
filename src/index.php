@@ -34,7 +34,7 @@ header('Content-Type: text/html');
 					<input id="memberPass" type="password" name="memberPass"> 
 				</li>		
 			</ul>
-			<input id="memberLogin" type="button" value="Login"> 
+			<input id="memberLogin" type="button" value="Login" onClick="loginMember()"> 
 		</fieldset>
 		</form>
 	</div>

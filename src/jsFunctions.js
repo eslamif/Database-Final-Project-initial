@@ -28,26 +28,6 @@ function() {
 	}); 
 },
 
-//Login Existing User
-function() {
-	$('#memberLogin').click(function() {
-		console.log("gg");
-			/*
-		$.post("database.php?action=login", 
-		{
-			emailAddress: $('#emailAddress').val(),
-			userPass: $('#userPass').val()
-		}, 
-			function(httpResponse) {
-				//Redirect to Member's Page
-				if(httpResponse == "member_exists") {
-					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
-				}
-			});
-			*/
-	}); 
-},
-
 //Add New Quote
 function() {
 	$('#addQuote').click(function() {
@@ -77,6 +57,21 @@ function() {
 
 ); //end $(document).ready
 
+//Login Existing User
+function loginMember() {
+	$.post("database.php?action=login", 
+	{
+		memberEmail: $('#memberEmail').val(),
+		memberPass: $('#memberPass').val()
+	}, 
+		function(httpResponse) {
+			if(httpResponse == "member_exists")
+				//Redirect to Member's Page
+				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
+			else
+				alert("The email and password don't match an existing account. Please try again or register a new account");
+		});
+}
 
 //Unhide Registration Form
 function unhideRegForm() {
