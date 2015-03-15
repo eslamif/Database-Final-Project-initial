@@ -32,7 +32,11 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 		session($_POST);
 		echo "user_registered";
 	}
-	
+}
+
+//Logout of Session
+if(isset($_GET['action']) && $_GET['action'] == 'end') {
+	session($_GET);
 }
 
 //Login Existing User
@@ -47,7 +51,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
 	$DbUserAndPass = getUserAndPassword($mysqli);		//Get all users & passwords from database
 	$jsonStr = json_encode($DbUserAndPass);				//encode to JSON string
 	
-	if(isEmailInDb($DbUserAndPass, $inputEmail) == true) {	//Validate Email		
+	if(isUserInDb($DbUserAndPass, $inputEmail, $inputPass) == true) {	//Validate Email		
 		echo "member_exists";
 		
 		//Start Tracking Session
@@ -56,8 +60,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'login') {
 	}
 	else
 		echo "DNE";
-
-
 }
 
 //Add New Quote
@@ -165,9 +167,10 @@ function getUserAndPassword($mysqli) {
 
 //Track Session
 function session($http) {
-	//Start and End session
-
+	//End Session
+	//session_start();
 	if(isset($http['action']) && $http['action'] == 'end') {
+		echo "session is ending";
 		//End session
 		$_SESSION = array();
 		session_destroy();
@@ -180,9 +183,11 @@ function session($http) {
 	
 	//Set username and user status as logged in
 	if(session_status() == PHP_SESSION_ACTIVE && !isset($_SESSION['loggedIn'])) {
+		/*
 		if(isset($http['f_name'])) {
 			$_SESSION['f_name'] = $http['f_name'];
 		}
+		*/
 		
 		//Set user status as logged in
 		if(!isset($_SESSION['loggedIn'])) {
@@ -191,12 +196,18 @@ function session($http) {
 	}
 }
 
-function isEmailInDb($DbUserAndPass, $inputEmail) {
+function isUserInDb($DbUserAndPass, $inputEmail, $inputPass) {
+	$i = 0;
 	foreach($DbUserAndPass as $dbEmail) {
-		if($dbEmail[0] == $inputEmail)
-			return true;
+		if($dbEmail[0] == $inputEmail) {
+			if($DbUserAndPass[$i][1] == $inputPass)
+				return true;
+			else
+				return false;
+		}
+	else
+		$i++;
 	}
-	return false;
 }
 
 ?>

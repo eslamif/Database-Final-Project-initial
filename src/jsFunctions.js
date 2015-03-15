@@ -232,3 +232,9 @@ function unhideAddFriend() {
 	//Unhide Registration Form
 	$('#newFriend').css("display", "block");	
 }
+
+//Logout of Session
+function logOut() {
+	window.location = "http://localhost/myhost-exemple/Final%20Project/src/database.php?action=end";
+}
+

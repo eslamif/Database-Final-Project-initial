@@ -32,10 +32,16 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	<h2>Quote Wiki</h2>
 	<h3>Life Lessons Frozen in Time</h3>
 	
-	<!-- Greet Member via AJAX -->
+	
+	<!-- Greet Member via AJAX 
 	<div id="greetMember"> 
 		<?php echo "Welcome " . ucfirst($_SESSION['f_name']) . "!"; ?>
 	</div>	
+	-->
+	
+	<div id="logOutDiv">
+		<input type="button" value="Logout" onClick="logOut()">
+	</div>
 	
 	<section id="actionMenu">
 	<div id="quotesMenu">
