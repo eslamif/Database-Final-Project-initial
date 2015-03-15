@@ -89,6 +89,7 @@ function validateFirstName() {
 			if(httpResponse == 'invalid') {
 				$('#f_name').css("background-color", "red");
 				alert("Your first name is invalid. Please enter a name between 2-20 letters.");
+				$('#f_name').focus();
 				validFirstName = false;
 			}
 			else {
@@ -106,6 +107,7 @@ function validateLastName() {
 			if(httpResponse == 'invalid') {
 				$('#l_name').css("background-color", "red");
 				alert("Your last name is invalid. Please enter a name between 2-20 letters.");
+				$('#l_name').focus();
 				validLastName = false;
 			}
 			else {
@@ -123,6 +125,7 @@ function validateEmailAddress() {
 			if(httpResponse == 'invalid') {
 				$('#emailAddress').css("background-color", "red");
 				alert("Your E-mail is invalid. Please enter a proper e-mail address.");
+				$('#emailAddress').focus();
 				validEmailAddress = false;
 			}
 			else {
@@ -140,6 +143,7 @@ function validatePassword() {
 			if(httpResponse == 'invalid') {
 				$('#userPass').css("background-color", "red");
 				alert("Your Password is invalid. Please ensure it's between 6-10 characters.");
+				$('#userPass').focus();
 				validUserPassword = false;
 			}
 			else {
