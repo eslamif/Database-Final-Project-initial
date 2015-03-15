@@ -30,7 +30,9 @@ function() {
 
 //Login Existing User
 function() {
-	$('#login').click(function() {
+	$('#memberLogin').click(function() {
+		console.log("gg");
+			/*
 		$.post("database.php?action=login", 
 		{
 			emailAddress: $('#emailAddress').val(),
@@ -42,6 +44,7 @@ function() {
 					window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
 				}
 			});
+			*/
 	}); 
 },
 

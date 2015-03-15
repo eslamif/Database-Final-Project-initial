@@ -10,6 +10,7 @@ header('Content-Type: text/html');
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">	
 	<title>Wiki Quote</title>
 </head>
 
@@ -18,21 +19,25 @@ header('Content-Type: text/html');
 	<h3>Life Lessons Frozen in Time</h3>
 	
 	<!-- Member Login -->
-	<form id="currentMembers">
-	<legend>Members</legend>
-		<ul>
-			<li>
-				<label>Email:</label>
-				<input id="e_mail" type="text" name="e_mail"> 
-			</li>
-			
-			<li>
-				<label>Password:</label>
-				<input id="password" type="password" name="password"> 
-			</li>		
-		</ul>
-		<input id="login" type="button" value="Login"> 
-	</form>
+	<div>
+		<form id="currentMembers">
+		<fieldset>
+		<legend>Members</legend>
+			<ul>
+				<li>
+					<label>Email:</label>
+					<input id="memberEmail" type="text" name="memberEmail"> 
+				</li>
+				
+				<li>
+					<label>Password:</label>
+					<input id="memberPass" type="password" name="memberPass"> 
+				</li>		
+			</ul>
+			<input id="memberLogin" type="button" value="Login"> 
+		</fieldset>
+		</form>
+	</div>
 	</br>
 		
 	<!-- Register New Account -->		

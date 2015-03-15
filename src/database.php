@@ -22,6 +22,9 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 	//Connect to MySQL
 	$mysqli = connectToSql();
 	
+	//Confirm user does not already exist (key = email)
+	
+	
 	//Save New User to Database & Start Session
 	if(setSqlNewUser($_POST, $mysqli)) {
 		session_start();

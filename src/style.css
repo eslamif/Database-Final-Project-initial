@@ -2,7 +2,7 @@
 	float:left;
 }
 
-#actionMenu ul, #newQuoteForm ul, #newFriend ul{
+#actionMenu ul, #newQuoteForm ul, #newFriend ul, #currentMembers ul{
 	list-style-type: none;
 }
 
