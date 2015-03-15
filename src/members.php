@@ -48,10 +48,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		<ul>
 			<h3>Quotes</h3>
 			<li><input type='button' value='Add Quote' onClick='unhideAddQuote()';></li>
-			<li><input type='button' value='View Latest Quote by You'></li>
-			<li><input type='button' value='View All Quotes by You'></li>			
-			<li><input type='button' value='View Latest Quote by Friends'></li>
-			<li><input type='button' value='View All Quotes by Friends'></li>
+			<li><input type='button' value='View Quotes'></li>
 			<li><input type='button' value='Delete Quote'></li>
 		</ul>
 	</div>
