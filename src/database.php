@@ -7,7 +7,8 @@ header('Content-Type: text/html');
 //Validate access is via POST REQUEST and from index.php
 $method = $_SERVER['REQUEST_METHOD'];
 if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] != 'register' &&
-	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote' && $_GET['action'] != 'add_friend')) {
+	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote' && $_GET['action'] != 'add_friend' &&
+	$_GET['action'] != 'getQuotes')) {
 	echo "You may not access this page directly. Please go back to the 
 	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
 }
@@ -98,6 +99,10 @@ if(isset($_GET['action']) && $_GET['action'] == 'add_friend') {
 		echo "error occrere";
 }
 
+//Get quotes from database
+if(isset($_GET['action']) && $_GET['action'] == 'getQuotes') {
+	echo "It worked";
+}
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Connect to mySQL

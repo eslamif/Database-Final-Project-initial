@@ -10,7 +10,7 @@
 	float:left;
 }
 
-#newQuoteForm, #newFriend {
+#newQuoteForm, #newFriend, #databaseResults {
 	clear: both;
 }
 

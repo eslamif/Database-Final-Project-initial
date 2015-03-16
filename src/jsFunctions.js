@@ -169,6 +169,7 @@ function unhideAddQuote() {
 	validQuote = false;
 	validQuoteTopic = false;
 	
+	$('#newFriend').css("display", "none");	
 	$('#newQuoteForm').css("display", "block");		
 }
 
@@ -233,6 +234,7 @@ function unhideAddFriend() {
 	validFriendEmailAddress = false;
 	
 	//Unhide Registration Form
+	$('#newQuoteForm').css("display", "none");
 	$('#newFriend').css("display", "block");	
 }
 
@@ -318,5 +320,14 @@ function addNewFriend() {
 				window.location = "http://localhost/myhost-exemple/Final%20Project/src/members.php";
 			}
 		}); 
+}
+
+//Get quotes from database
+function getQuotes() {
+	$.post("database.php?action=getQuotes", 
+	function(httpResponse) {
+		//Display Quotes
+		$('#databaseResults').html(httpResponse);
+	});
 }
 

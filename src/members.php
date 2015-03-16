@@ -48,8 +48,8 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		<ul>
 			<h3>Quotes</h3>
 			<li><input type='button' value='Add Quote' onClick='unhideAddQuote()';></li>
-			<li><input type='button' value='View Quotes'></li>
-			<li><input type='button' value='Delete Quote'></li>
+			<li><input type='button' value='View Quotes' onClick="getQuotes()"></li>
+			<li><input type='button' value='View Topics'></li>			
 		</ul>
 	</div>
 	
@@ -132,6 +132,12 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		</fieldset>
 		</form>
 	</div>
+	
+	<!-- Display Databse Results -->
+	<div id="databaseResults">
+	
+	</div>
+	
 	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>	
 	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jsFunctions.js"></script>	
