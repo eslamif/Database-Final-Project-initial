@@ -15,8 +15,10 @@ header('Content-Type: text/html');
 </head>
 
 <body>
+	<div class="header">
 	<h2>Quote Wiki</h2>
-	<h3>Life Lessons Frozen in Time</h3>
+	<h3><i>Life Lessons Frozen in Time</i></h3>
+	</div>
 	
 	<!-- Member Login -->
 	<div>

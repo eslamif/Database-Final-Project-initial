@@ -29,38 +29,35 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 </head>
 
 <body>
+	<div class="header">
 	<h2>Quote Wiki</h2>
-	<h3>Life Lessons Frozen in Time</h3>
-	
-	
-	<!-- Greet Member via AJAX 
-	<div id="greetMember"> 
-		<?php echo "Welcome " . ucfirst($_SESSION['f_name']) . "!"; ?>
-	</div>	
-	-->
-	
-	<div id="logOutDiv">
-		<input type="button" value="Logout" onClick="logOut()">
+	<h3><i>Life Lessons Frozen in Time</i></h3>
 	</div>
 	
-	<section id="actionMenu">
-	<div id="quotesMenu">
-		<ul>
-			<h3>Quotes</h3>
-			<li><input type='button' value='Add Quote' onClick='unhideAddQuote()';></li>
-			<li><input type='button' value='View Quotes' onClick="getQuotes()"></li>
-			<li><input type='button' value='View Topics' onClick="getTopics()"></li>			
-		</ul>
+	<div id="menuWrapper">		
+		<div id="logOutDiv">
+			<input type="button" value="Logout" onClick="logOut()">
+		</div>
+		
+		<section id="actionMenu">
+		<div id="quotesMenu">
+			<ul>
+				<h3>Quotes</h3>
+				<li><input type='button' value='Add Quote' onClick='unhideAddQuote()';></li>
+				<li><input type='button' value='View Quotes' onClick="getQuotes()"></li>
+				<li><input type='button' value='View Topics' onClick="getTopics()"></li>			
+			</ul>
+		</div>
+		
+		<div id="friendsMenu">
+			<ul>
+				<h3>Friends</h3>
+				<li><input type='button' value='Add Friend' onClick="unhideAddFriend()"></li>			
+				<li><input type='button' value='View Friends List' onClick="getFriends()"></li>
+			</ul>
+		</div>	
+		</section>
 	</div>
-	
-	<div id="friendsMenu">
-		<ul>
-			<h3>Friends</h3>
-			<li><input type='button' value='Add Friend' onClick="unhideAddFriend()"></li>			
-			<li><input type='button' value='View Friends List' onClick="getFriends()"></li>
-		</ul>
-	</div>	
-	</section>
 	
 	<!-- Add New Quote -->
 	<div id="newQuoteForm" style="display: none;">	
