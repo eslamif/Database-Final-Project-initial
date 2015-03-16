@@ -49,7 +49,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 			<h3>Quotes</h3>
 			<li><input type='button' value='Add Quote' onClick='unhideAddQuote()';></li>
 			<li><input type='button' value='View Quotes' onClick="getQuotes()"></li>
-			<li><input type='button' value='View Topics'></li>			
+			<li><input type='button' value='View Topics' onClick="getTopics()"></li>			
 		</ul>
 	</div>
 	

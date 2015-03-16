@@ -8,7 +8,7 @@ header('Content-Type: text/html');
 $method = $_SERVER['REQUEST_METHOD'];
 if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] != 'register' &&
 	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote' && $_GET['action'] != 'add_friend' &&
-	$_GET['action'] != 'getQuotes')) {
+	$_GET['action'] != 'getQuotes' && $_GET['action'] != 'getTopics')) {
 	echo "You may not access this page directly. Please go back to the 
 	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
 }
@@ -109,6 +109,15 @@ if(isset($_GET['action']) && $_GET['action'] == 'getQuotes') {
 	echo $jsonStr;
 }
 
+//Get topics from database
+if(isset($_GET['action']) && $_GET['action'] == 'getTopics') {
+	//Connect to MySQL
+	$mysqli = connectToSql();
+	
+	$result = getTopicsFromDb($mysqli);
+	$jsonStr = json_encode($result);				//encode to JSON string
+	echo $jsonStr;
+}
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
 //Connect to mySQL
 function connectToSql() {
@@ -349,5 +358,38 @@ function getQuoteFromDb($mysqli) {
 	return $arrOuter;
 }
 
+//Get topics from database
+function getTopicsFromDb($mysqli) {
+	$dbResults = NULL;
+	
+	//Prepared Statement - prepare
+	if (!($stmt = $mysqli->prepare("SELECT title FROM topics"))) {
+		//echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		echo "An error occurred while communicating with the database server. Please try again later."; 
+	}
+	
+	//Prepared Statement - execute
+	if (!$stmt->execute()) {
+		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+
+	//Bind results
+	if (!$stmt->bind_result($dbResults)) {
+	    //echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+	
+	//Store result in array
+	$arrOuter = array();
+	$arrInner = array();
+	while($stmt->fetch()) {
+		$arrInner = [$dbResults];
+		array_push($arrOuter, $arrInner);		
+	}
+	
+	$stmt->close();	
+	return $arrOuter;
+}
 
 ?>
