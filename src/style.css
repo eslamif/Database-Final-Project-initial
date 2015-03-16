@@ -44,3 +44,11 @@ form {
 #databaseResults {
 	background-color: #C4D9C4;	
 }
+
+#intro {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;	
+	font-family: cursive;
+	width: 75%;
+}

@@ -130,7 +130,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	
 	<!-- Display Databse Results -->
 	<div id="databaseResults" style="display: none">
-		<p>Please refresh page if you wish to view more Quotes, Topics, or Friends.
+		<p>Please refresh page if you wish to view more more Quotes, Topics, or Friends.
 		<table>
 			<caption>Results</caption>
 			<tbody id='nextRow'></tbody>

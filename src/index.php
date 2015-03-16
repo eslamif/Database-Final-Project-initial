@@ -20,6 +20,12 @@ header('Content-Type: text/html');
 	<h3><i>Life Lessons Frozen in Time</i></h3>
 	</div>
 	
+	<div id="intro">
+		<p>Welcome to Quote Wiki. Here you can create and share your favorite quotes with friends
+		or simply view them later for inspiration. The site is work-in-progress with many more enhancements
+		to come.
+	</div>
+	
 	<!-- Member Login -->
 	<div>
 		<form id="currentMembers">
