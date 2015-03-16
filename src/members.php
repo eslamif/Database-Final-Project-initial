@@ -134,7 +134,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	</div>
 	
 	<!-- Display Databse Results -->
-	<div id="databaseResults">
+	<div id="databaseResults" style="display: none">
 		<table>
 			<caption>Results</caption>
 			<tbody id='nextRow'></tbody>

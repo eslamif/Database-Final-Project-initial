@@ -169,6 +169,7 @@ function unhideAddQuote() {
 	validQuote = false;
 	validQuoteTopic = false;
 	
+	$('#databaseResults').css("display", "none");		
 	$('#newFriend').css("display", "none");	
 	$('#newQuoteForm').css("display", "block");		
 }
@@ -234,6 +235,7 @@ function unhideAddFriend() {
 	validFriendEmailAddress = false;
 	
 	//Unhide Registration Form
+	$('#databaseResults').css("display", "none");	
 	$('#newQuoteForm').css("display", "none");
 	$('#newFriend').css("display", "block");	
 }
@@ -327,12 +329,10 @@ function getQuotes() {
 	$.post("database.php?action=getQuotes", 
 	function(httpResponse) {
 		//Display Div
-		/*
 		$('#newFriend').css("display", "none");	
 		$('#newQuoteForm').css("display", "none");		
 		$('#databaseResults').css("display", "block");	
-		*/
-		
+
 		//Display Quotes
 		var jsonObj = JSON.parse(httpResponse);			//convert JSON string to JSON object
 		
