@@ -260,21 +260,21 @@ function isUserInDb($DbUserAndPass, $inputEmail, $inputPass) {
 function setQuote($mysqli, $quote_title, $quote, $quote_topic) {	
 	//Prepared Statement - prepare for quotes table
 	if (!($stmt = $mysqli->prepare("INSERT INTO quotes(title, quote) VALUES (?, ?)"))) {
-		 //echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		 echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 		 echo "An error occurred while communicating with the database server. Please try again later.";
 		 return false;
 	}	
 	
 	//Prepared Statement - bind and execute for topics table
 	if (!$stmt->bind_param('ss', $quote_title, $quote)) {
-		//echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
 	}	
 	
 	//Execute for topics table
 	if (!$stmt->execute()) {  
-		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
 	}
@@ -282,21 +282,21 @@ function setQuote($mysqli, $quote_title, $quote, $quote_topic) {
 	
 	//Prepared Statement - prepare for topics table
 	if (!($stmt = $mysqli->prepare("INSERT INTO topics(title) VALUES (?)"))) {
-		 //echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		 echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 		 echo "An error occurred while communicating with the database server. Please try again later.";
 		 return false;
 	}	
 	
 	//Prepared Statement - bind and execute for topics table
 	if (!$stmt->bind_param('s', $quote_topic)) {
-		//echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
 	}	
 	
 	//Execute for topics table
 	if (!$stmt->execute()) {  
-		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
 	}
