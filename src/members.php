@@ -58,7 +58,6 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 			<h3>Friends</h3>
 			<li><input type='button' value='Add Friend' onClick="unhideAddFriend()"></li>			
 			<li><input type='button' value='View Friends List' onClick="getFriends()"></li>
-			<li><input type='button' value='Remove Friend'></li>
 		</ul>
 	</div>	
 	</section>
