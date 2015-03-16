@@ -101,7 +101,12 @@ if(isset($_GET['action']) && $_GET['action'] == 'add_friend') {
 
 //Get quotes from database
 if(isset($_GET['action']) && $_GET['action'] == 'getQuotes') {
-	echo "It worked";
+	//Connect to MySQL
+	$mysqli = connectToSql();
+
+	$result = getQuoteFromDb($mysqli);
+	$jsonStr = json_encode($result);				//encode to JSON string
+	echo $jsonStr;
 }
 
 /*------------------- PHP FUNCTION DEFINITIONS -------------------*/
@@ -309,5 +314,40 @@ function setFriend($mysqli, $friend_f_name, $friend_l_name, $friend_email) {
 	$stmt->close();		//close statement for topics table	
 	return true;
 }
+
+//Get quotes from database
+function getQuoteFromDb($mysqli) {
+	$dbResults = NULL;
+	
+	//Prepared Statement - prepare
+	if (!($stmt = $mysqli->prepare("SELECT quote FROM quotes"))) {
+		//echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		echo "An error occurred while communicating with the database server. Please try again later."; 
+	}
+	
+	//Prepared Statement - execute
+	if (!$stmt->execute()) {
+		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+
+	//Bind results
+	if (!$stmt->bind_result($dbResults)) {
+	    //echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+	
+	//Store result in array
+	$arrOuter = array();
+	$arrInner = array();
+	while($stmt->fetch()) {
+		$arrInner = [$dbResults];
+		array_push($arrOuter, $arrInner);		
+	}
+	
+	$stmt->close();	
+	return $arrOuter;
+}
+
 
 ?>
