@@ -58,4 +58,30 @@ FOREIGN KEY(friend) REFERENCES friends(id_friend) ON DELETE CASCADE
 )ENGINE=INNODB;
 
 
+
 #**** QUERIES ****
+
+prepare("INSERT INTO users(f_name, l_name, email, password, dob) VALUES (?, ?, ?, ?, ?)")
+
+
+$mysqli->prepare("INSERT INTO quotes(title, quote) VALUES (?, ?)")
+
+
+$mysqli->prepare("INSERT INTO topics(title) VALUES (?)")
+
+
+$mysqli->prepare("INSERT INTO friends(f_name, l_name, email) VALUES (?, ?, ?)")
+
+
+$mysqli->prepare("SELECT quote FROM quotes")
+
+
+
+$mysqli->prepare("SELECT title FROM topics")
+
+
+
+$mysqli->prepare("SELECT f_name FROM friends")
+
+
+
