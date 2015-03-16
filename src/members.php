@@ -85,7 +85,6 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 					<input id="quote_topic" type="text" name="quote_topic" onblur="validateQuoteTopic()"
 					placeholder="What topic to file under?">
 					<label>(4-20 characters)</label>
-					<input type="button" value="View Your Existing Topics">
 				</li>
 				
 				<li>
