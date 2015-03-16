@@ -94,7 +94,7 @@ header('Content-Type: text/html');
 		</div>
 	</div>
 	
-	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jquery.js"></script>	
-	<script type="text/javascript" src="http://localhost/myhost-exemple/Final%20Project/src/jsFunctions.js"></script>
+	<script type="text/javascript" src="http://web.engr.oregonstate.edu/~eslamif/final_project/src/jquery.js"></script>	
+	<script type="text/javascript" src="http://web.engr.oregonstate.edu/~eslamif/final_project/src/jsFunctions.js"></script>
 </body>
 </html>

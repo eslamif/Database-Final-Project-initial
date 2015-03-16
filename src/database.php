@@ -10,7 +10,7 @@ if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] 
 	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote' && $_GET['action'] != 'add_friend' &&
 	$_GET['action'] != 'getQuotes' && $_GET['action'] != 'getTopics' && $_GET['action'] != 'getFriends')) {
 	echo "You may not access this page directly. Please go back to the 
-	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
+	<a href=http://web.engr.oregonstate.edu/~eslamif/final_project/src/index.php>Login</a> page";
 }
 
 //Register New User
@@ -129,16 +129,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'getFriends') {
 //Connect to mySQL
 function connectToSql() {
 	//Database access info
-	$dbhost = "localhost";
-	$dbuser = "root";
-	$dbpass = "root";
-	$dbname = "quote_wiki";
+	$dbhost = "oniddb.cws.oregonstate.edu";
+	$dbuser = "eslamif-db";
+	$dbpass = "CjmY5rMbMAYg312u";
+	$dbname = "eslamif-db";
 	
 	//Connect to MySQL Server
 	$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 	if($mysqli->connect_errno) {
 		echo "An error occurred while connecting to the database server. Please try again later.";
-		//echo $mysqli->connect_errno . " $mysqli->connect_errno.";
+		echo $mysqli->connect_errno . " $mysqli->connect_errno.";
 	}
 	return $mysqli;
 }	
@@ -154,20 +154,20 @@ function setSqlNewUser($http, $mysqli) {
 	
 	//Prepared Statement - prepare
 	if (!($stmt = $mysqli->prepare("INSERT INTO users(f_name, l_name, email, password, dob) VALUES (?, ?, ?, ?, ?)"))) {
-		 //echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		 echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 		 echo "An error occurred while communicating with the database server. Please try again later.";
 		 return false;
 	}	
 	
 	//Prepared Statement - bind and execute 
 	if (!$stmt->bind_param('sssss', $f_name, $l_name, $e_mail, $pass, $dob)) {
-		//echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
 	}	
 	
 	if (!$stmt->execute()) {
-		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 		return false;
 	}
@@ -183,19 +183,19 @@ function getUserAndPassword($mysqli) {
 	
 	//Prepared Statement - prepare
 	if (!($stmt = $mysqli->prepare("SELECT email, password FROM users"))) {
-		//echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 		echo "An error occurred while communicating with the database server. Please try again later."; 
 	}
 	
 	//Prepared Statement - execute
 	if (!$stmt->execute()) {
-		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 	}
 
 	//Bind results
 	if (!$stmt->bind_result($e_mail, $password)) {
-	    //echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+	    echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 		echo "An error occurred while communicating with the database server. Please try again later.";
 	}
 	
@@ -222,7 +222,7 @@ function session($http) {
 		session_destroy();
 		
 		//Redirect user
-		$redirect = "http://localhost/myhost-exemple/Final%20Project/src/index.php";
+		$redirect = "http://web.engr.oregonstate.edu/~eslamif/final_project/src/index.php";
 		header("Location: {$redirect}", true);
 		die();			
 	}

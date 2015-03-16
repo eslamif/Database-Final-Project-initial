@@ -1,7 +1,7 @@
 #**** SETUP TABLES ****
 
 #Create Users Table
-CREATE TABLE Users (
+CREATE TABLE users (
 id_user INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 f_name VARCHAR(255),
 l_name VARCHAR(255),
@@ -12,14 +12,14 @@ dob DATE NOT NULL
 
 
 #Create Topics Table
-CREATE TABLE Topics(
+CREATE TABLE topics(
 id_topic INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(255)
 )ENGINE=INNODB;
 
 
 #Create Quotes Table
-CREATE TABLE Quotes (
+CREATE TABLE quotes (
 id_quote INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(255),
 quote VARCHAR(255),
@@ -31,7 +31,7 @@ FOREIGN KEY(fk_user) REFERENCES users(id_user)
 
 
 #create Friends Table
-CREATE TABLE Friends(
+CREATE TABLE friends(
 id_friend INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 f_name VARCHAR(255),
 l_name VARCHAR(255),
@@ -40,7 +40,7 @@ email VARCHAR(255)
 
 
 #Create Share Table
-CREATE TABLE Share (
+CREATE TABLE share (
 topic INT(11) UNSIGNED,
 quote INT(11) UNSIGNED,
 FOREIGN KEY(topic) REFERENCES topics(id_topic) ON DELETE CASCADE,
@@ -49,7 +49,7 @@ FOREIGN KEY(quote) REFERENCES quotes(id_quote) ON DELETE CASCADE
 
 
 #Create Relationship Table
-CREATE TABLE Relationship(
+CREATE TABLE relationship(
 user INT(11) UNSIGNED,
 friend INT(11) UNSIGNED,
 type INT(11),
