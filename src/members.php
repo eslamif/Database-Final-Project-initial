@@ -135,7 +135,10 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	
 	<!-- Display Databse Results -->
 	<div id="databaseResults">
-	
+		<table>
+			<caption>Results</caption>
+			<tbody id='nextRow'></tbody>
+		</table>
 	</div>
 	
 	
