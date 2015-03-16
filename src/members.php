@@ -57,7 +57,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 		<ul>
 			<h3>Friends</h3>
 			<li><input type='button' value='Add Friend' onClick="unhideAddFriend()"></li>			
-			<li><input type='button' value='View Friends List'></li>
+			<li><input type='button' value='View Friends List' onClick="getFriends()"></li>
 			<li><input type='button' value='Remove Friend'></li>
 		</ul>
 	</div>	
@@ -135,6 +135,7 @@ else if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
 	
 	<!-- Display Databse Results -->
 	<div id="databaseResults" style="display: none">
+		<p>Please refresh page if you wish to view more Quotes, Topics, or Friends.
 		<table>
 			<caption>Results</caption>
 			<tbody id='nextRow'></tbody>

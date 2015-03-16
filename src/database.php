@@ -8,7 +8,7 @@ header('Content-Type: text/html');
 $method = $_SERVER['REQUEST_METHOD'];
 if(strtolower($method) != 'post' || !isset($_GET['action']) || ($_GET['action'] != 'register' &&
 	$_GET['action'] != 'login' && $_GET['action'] != 'add_quote' && $_GET['action'] != 'add_friend' &&
-	$_GET['action'] != 'getQuotes' && $_GET['action'] != 'getTopics')) {
+	$_GET['action'] != 'getQuotes' && $_GET['action'] != 'getTopics' && $_GET['action'] != 'getFriends')) {
 	echo "You may not access this page directly. Please go back to the 
 	<a href=http://localhost/myhost-exemple/Final%20Project/src/index.php>Login</a> page";
 }
@@ -23,10 +23,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'register') {
 			
 	//Connect to MySQL
 	$mysqli = connectToSql();
-	
-	//Confirm user does not already exist (key = email)
-	
-	
+
 	//Save New User to Database & Start Session
 	if(setSqlNewUser($_POST, $mysqli) == true) {
 		session_start();
@@ -115,6 +112,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'getTopics') {
 	$mysqli = connectToSql();
 	
 	$result = getTopicsFromDb($mysqli);
+	$jsonStr = json_encode($result);				//encode to JSON string
+	echo $jsonStr;
+}
+
+//Get friends from database
+if(isset($_GET['action']) && $_GET['action'] == 'getFriends') {
+	//Connect to MySQL
+	$mysqli = connectToSql();
+	
+	$result = getFriendsFromDb($mysqli);
 	$jsonStr = json_encode($result);				//encode to JSON string
 	echo $jsonStr;
 }
@@ -391,5 +398,40 @@ function getTopicsFromDb($mysqli) {
 	$stmt->close();	
 	return $arrOuter;
 }
+
+//Get friends from database
+function getFriendsFromDb($mysqli) {
+	$dbResults = NULL;
+	
+	//Prepared Statement - prepare
+	if (!($stmt = $mysqli->prepare("SELECT f_name FROM friends"))) {
+		//echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+		echo "An error occurred while communicating with the database server. Please try again later."; 
+	}
+	
+	//Prepared Statement - execute
+	if (!$stmt->execute()) {
+		//echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+
+	//Bind results
+	if (!$stmt->bind_result($dbResults)) {
+	    //echo "Binding output parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+		echo "An error occurred while communicating with the database server. Please try again later.";
+	}
+	
+	//Store result in array
+	$arrOuter = array();
+	$arrInner = array();
+	while($stmt->fetch()) {
+		$arrInner = [$dbResults];
+		array_push($arrOuter, $arrInner);		
+	}
+	
+	$stmt->close();	
+	return $arrOuter;
+}
+
 
 ?>

@@ -380,3 +380,30 @@ function getTopics() {
 	});
 }
 
+//Get Friends from 
+function getFriends() {
+	$.post("database.php?action=getFriends", 
+	function(httpResponse) {
+		//Display Div
+		$('#newFriend').css("display", "none");	
+		$('#newQuoteForm').css("display", "none");		
+		$('#databaseResults').css("display", "block");	
+
+		//Display Quotes
+		var jsonObj = JSON.parse(httpResponse);			//convert JSON string to JSON object
+		
+		for(var i = 0; i < jsonObj.length; i++) {
+			var name = jsonObj[i];
+			var category = jsonObj[i];
+			var length = jsonObj[i];
+			var status = jsonObj[i];
+			
+			var tr = document.createElement("tr");
+			document.getElementById('nextRow').appendChild(tr);
+			
+			var td = document.createElement("td");
+			td.innerText = name;
+			tr.appendChild(td);	
+		}			
+	});	
+}
